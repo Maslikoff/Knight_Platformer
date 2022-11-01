@@ -39,23 +39,14 @@ TagManager:
   - 
   m_SortingLayers:
   - name: Background
-    uniqueID: 2381050157
+    uniqueID: 3987678743
     locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Environment
-    uniqueID: 1694744039
+  - name: Player
+    uniqueID: 1685814209
     locked: 0
-  - name: Tree
-    uniqueID: 3008377691
-    locked: 0
-  - name: Graund
-    uniqueID: 2272309727
-    locked: 0
-  - name: Charecter
-    uniqueID: 3144516859
-    locked: 0
-  - name: Water
-    uniqueID: 3407366101
+  - name: EA
+    uniqueID: 1517553807
     locked: 0

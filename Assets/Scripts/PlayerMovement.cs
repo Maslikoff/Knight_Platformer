@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-	public float speed = 5f;
-	public float JampForse = 5f;
+    [Header("Скорость")]
+	[Range(0,10f)][SerializeField] private float speed = 5f;
+    [Header("Сила прыжка")]
+	[Range(0, 15f)][SerializeField] private float JampForse = 5f;
 
 	public Animator animator;
 	private Rigidbody2D _rigidbody;
@@ -54,6 +56,6 @@ public class PlayerMovement : MonoBehaviour
 	private void MoveJamp()
 	{
 		if (Input.GetKeyDown(KeyCode.Space) && Mathf.Abs(_rigidbody.velocity.y) < 0.05f)
-			_rigidbody.AddForce(new Vector2(0, JampForse), ForceMode2D.Impulse);
+			_rigidbody.AddForce(transform.up * JampForse, ForceMode2D.Impulse);
 	}
 }

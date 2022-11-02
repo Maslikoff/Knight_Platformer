@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
 		move.x = Input.GetAxisRaw("Horizontal");
+		move.y = _rigidbody.velocity.y;
 
 		animator.SetFloat("Speed", Mathf.Abs(move.x));
 

@@ -10,53 +10,74 @@ public class PlayerMovement : MonoBehaviour
 	[Range(0, 15f)][SerializeField] private float JampForse = 5f;
 
 	public Animator animator;
+
 	private Rigidbody2D _rigidbody;
 	private SpriteRenderer _spriteRenderer;
 
+	private bool _grounded;
+
 	private Vector2 move;
 
-    void Start()
+    private void Start()
     {
 		_rigidbody = GetComponent<Rigidbody2D>();
 		_spriteRenderer = GetComponent<SpriteRenderer>();
     }
+	
+	private void FixedUpdate()
+	{
+		_rigidbody.velocity = new Vector2 (move.x, move.y);
 
-    void Update()
+		Flip();
+	}
+
+    private void Update()
     {
-		move.x = Input.GetAxisRaw("Horizontal");
+		move.x = Input.GetAxisRaw("Horizontal") * speed;
 		move.y = _rigidbody.velocity.y;
 
 		animator.SetFloat("Speed", Mathf.Abs(move.x));
+		animator.SetBool("Grounded", _grounded);
 
-		Attack();
-	}
-
-	private void Attack()
-    {
 		if (Input.GetButtonDown("Fire1"))
-		{
-			animator.SetTrigger("Attack");
-		}
-    }
-
-	private void FixedUpdate()
-	{
-		_rigidbody.MovePosition(_rigidbody.position + move * speed * Time.fixedDeltaTime);
-
-		if (move.x < 0f)
-		{
-			_spriteRenderer.flipX = true;
-		} else if (move.x > 0f)
-		{
-			_spriteRenderer.flipX = false;
-		}
-
-		MoveJamp();
+			Attack();
+		
+		if (Input.GetKeyDown(KeyCode.Space) && _grounded)
+			MoveJamp();
 	}
-
+	
+	/// <summary>
+	/// Прыжок
+	/// </summary>
 	private void MoveJamp()
 	{
-		if (Input.GetKeyDown(KeyCode.Space) && Mathf.Abs(_rigidbody.velocity.y) < 0.05f)
-			_rigidbody.AddForce(transform.up * JampForse, ForceMode2D.Impulse);
+		_rigidbody.velocity = new Vector2(_rigidbody.velocity.x, JampForse);
+		animator.SetTrigger("Jump");
+		_grounded = false;
 	}
+
+	/// <summary>
+	/// Атака
+	/// </summary>
+	private void Attack()
+    {
+		animator.SetTrigger("Attack");
+    }
+
+	/// <summary>
+	/// Флип))
+	/// </summary>
+	private void Flip()
+    {
+		if (move.x < 0f)
+			_spriteRenderer.flipX = true;
+		else if (move.x > 0f)
+			_spriteRenderer.flipX = false;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+			_grounded = true;
+    }
 }

@@ -514,6 +514,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8880890979093333426}
   - component: {fileID: 8880890979093333425}
+  - component: {fileID: 6012116086019140774}
+  - component: {fileID: 576487829164560376}
   m_Layer: 0
   m_Name: TX Village Props Stall Tent
   m_TagString: Untagged
@@ -588,6 +590,51 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &6012116086019140774
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8880890979093333424}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 1
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.8125, y: 0.875}
+    newSize: {x: 2.8125, y: 0.875}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.8125, y: 0.875}
+  m_EdgeRadius: 0
+--- !u!251 &576487829164560376
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8880890979093333424}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &8880890979157700241
 GameObject:
   m_ObjectHideFlags: 0
@@ -628,7 +675,6 @@ Transform:
   - {fileID: 8880890977463174005}
   - {fileID: 8880890978935763845}
   - {fileID: 8880890977455105451}
-  - {fileID: 8880890978000517118}
   - {fileID: 8880890979124023395}
   - {fileID: 8731064917795236288}
   - {fileID: 4382483147025464263}
@@ -894,7 +940,7 @@ PrefabInstance:
     - target: {fileID: 7416948081550509475, guid: 945a24dea7767f846ad8007110a371f3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7416948081550509475, guid: 945a24dea7767f846ad8007110a371f3,
         type: 3}
@@ -969,7 +1015,7 @@ PrefabInstance:
     - target: {fileID: 5789200093759024975, guid: ab9278aa8a6f856468c48e893720a765,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 5789200093759024975, guid: ab9278aa8a6f856468c48e893720a765,
         type: 3}
@@ -1104,81 +1150,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4271805503555603264}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &4969492847749123459
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 8880890979157700243}
-    m_Modifications:
-    - target: {fileID: 4596042308710791805, guid: 33765db783031c64eb242d22002b9a55,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596042308710791805, guid: 33765db783031c64eb242d22002b9a55,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.04800415
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596042308710791805, guid: 33765db783031c64eb242d22002b9a55,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596042308710791805, guid: 33765db783031c64eb242d22002b9a55,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.13
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596042308710791805, guid: 33765db783031c64eb242d22002b9a55,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596042308710791805, guid: 33765db783031c64eb242d22002b9a55,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596042308710791805, guid: 33765db783031c64eb242d22002b9a55,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596042308710791805, guid: 33765db783031c64eb242d22002b9a55,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596042308710791805, guid: 33765db783031c64eb242d22002b9a55,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596042308710791805, guid: 33765db783031c64eb242d22002b9a55,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596042308710791805, guid: 33765db783031c64eb242d22002b9a55,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4596042308710791807, guid: 33765db783031c64eb242d22002b9a55,
-        type: 3}
-      propertyPath: m_Name
-      value: PF Village Props - Basket
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 33765db783031c64eb242d22002b9a55, type: 3}
---- !u!4 &8880890978000517118 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4596042308710791805, guid: 33765db783031c64eb242d22002b9a55,
-    type: 3}
-  m_PrefabInstance: {fileID: 4969492847749123459}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5468942014487123045
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1264,7 +1235,7 @@ PrefabInstance:
     - target: {fileID: 4596042308710791805, guid: 33765db783031c64eb242d22002b9a55,
         type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4596042308710791805, guid: 33765db783031c64eb242d22002b9a55,
         type: 3}
@@ -1344,7 +1315,7 @@ PrefabInstance:
     - target: {fileID: 4798532672243395373, guid: 838a9c74e6cba734faec44d9be3b765e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 4798532672243395373, guid: 838a9c74e6cba734faec44d9be3b765e,
         type: 3}

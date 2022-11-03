@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class CameraMove : MonoBehaviour
 {
+    [Header("Игрок")]
     [SerializeField] private Transform Player;
 
+    /// <summary>
+    /// Расстояние до игрока
+    /// </summary>
     private Vector3 _offset;
 
     void Start()

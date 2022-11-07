@@ -1706,7 +1706,8 @@ MonoBehaviour:
   Object: {fileID: 415705472}
   particle: {fileID: 8915592098107820937, guid: 10219c35b679348448a97089059dac56,
     type: 3}
-  pointEffector: {fileID: 415705477}
+  pointEffector: {fileID: 99773775007905436, guid: 82675d941f66ebe4c9aad5b118bd458f,
+    type: 3}
 --- !u!60 &415705475
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1791,26 +1792,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!250 &415705477
-PointEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 415705472}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceMagnitude: 100
-  m_ForceVariation: 0
-  m_DistanceScale: 10
-  m_ForceSource: 0
-  m_ForceTarget: 0
-  m_ForceMode: 0
-  m_Drag: 0
-  m_AngularDrag: 0
 --- !u!1 &417882452
 GameObject:
   m_ObjectHideFlags: 0
@@ -3931,7 +3912,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 10
+  m_Mass: 2
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 2

@@ -15,9 +15,9 @@ public class Boom : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("BoxTNT"))
         {
-            Destroy(Object, 1.5f);
             Instantiate(particle, transform.position, Quaternion.identity);
             Instantiate(pointEffector, transform.position, Quaternion.identity);
+            Destroy(Object, 1.5f);
         }
     }
 }

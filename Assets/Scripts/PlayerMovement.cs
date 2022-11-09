@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent(typeof(Shooter))]
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Скорость")]
@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
 	private BoxCollider2D _boxCollider;
 	private Rigidbody2D _rigidbody;
 	private SpriteRenderer _spriteRenderer;
+	private Shooter _spooter;
 
 	private float wallJumpColdown;
 
@@ -28,12 +29,12 @@ public class PlayerMovement : MonoBehaviour
 		_rigidbody = GetComponent<Rigidbody2D>();
 		_spriteRenderer = GetComponent<SpriteRenderer>();
 		_boxCollider = GetComponent<BoxCollider2D>();
+		_spooter = GetComponent<Shooter>();
     }
 	
 	private void FixedUpdate()
 	{
 		MovementPlayer();
-		
 		Flip();
 	}
 
@@ -50,7 +51,10 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
 		if (Input.GetButtonDown("Fire1")) // Нажатие ЛКМ
-			AttackRMB();
+			AttackLBM();
+
+		if (Input.GetButtonDown("Fire2")) //Нажмите ПКМ
+			AttackRBM();
 
         if (wallJumpColdown > 0.2f)
         {
@@ -109,9 +113,14 @@ public class PlayerMovement : MonoBehaviour
 	/// <summary>
 	/// Атака
 	/// </summary>
-	private void AttackRMB()
+	private void AttackLBM()
     {
 		animator.SetTrigger("Attack");
+    }
+
+	private void AttackRBM()
+    {
+		_spooter.Shoot(move.x);
     }
 
 	/// <summary>

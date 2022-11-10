@@ -1,34 +1,35 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 [RequireComponent(typeof(Shooter))]
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Скорость")]
-	[Range(0,10f)][SerializeField] private float speed = 5f;
+	[Range(0,10f)][SerializeField] private float Speed = 5f;
     [Header("Сила прыжка")]
 	[Range(0, 15f)][SerializeField] private float JampForse = 5f;
-	[Header("Слой Земли")]
-	[SerializeField] private LayerMask groundLayer;
-	[Header("Слой Стены")]
-	[SerializeField] private LayerMask wallLayer;
+	[Header("Перезарядка суперсилы")]
+	[SerializeField] private float attackCooldown;
+	[Header("Удар")]
+	[SerializeField] private float attack;
+	[SerializeField] private Image barSuperAttack;
 
 	public Animator animator;
 
-	private BoxCollider2D _boxCollider;
 	private Rigidbody2D _rigidbody;
 	private SpriteRenderer _spriteRenderer;
 	private Shooter _spooter;
 
-	private float wallJumpColdown;
+	private float cooldownTimer = Mathf.Infinity;
+	private bool _grounded;
 
 	private Vector2 move;
 
-    private void Start()
+    private void Awake()
     {
 		_rigidbody = GetComponent<Rigidbody2D>();
 		_spriteRenderer = GetComponent<SpriteRenderer>();
-		_boxCollider = GetComponent<BoxCollider2D>();
 		_spooter = GetComponent<Shooter>();
     }
 	
@@ -43,9 +44,10 @@ public class PlayerMovement : MonoBehaviour
 	/// </summary>
     private void MovementPlayer()
     {
-		move.x = Input.GetAxisRaw("Horizontal") * speed;
+		move.x = Input.GetAxisRaw("Horizontal") * Speed;
 		move.y = _rigidbody.velocity.y;
 		
+		_rigidbody.velocity = move;
     }
 
     private void Update()
@@ -53,27 +55,14 @@ public class PlayerMovement : MonoBehaviour
 		if (Input.GetButtonDown("Fire1")) // Нажатие ЛКМ
 			AttackLBM();
 
-		if (Input.GetButtonDown("Fire2")) //Нажмите ПКМ
+		if (Input.GetButtonUp("Fire2") && cooldownTimer > attackCooldown && _grounded) // Нажмите ПКМ
 			AttackRBM();
+		cooldownTimer += Time.deltaTime; // Перезарядка суперсилы
+		barSuperAttack.fillAmount = cooldownTimer / 5;
 
-        if (wallJumpColdown > 0.2f)
-        {
-			_rigidbody.velocity = new Vector2 (move.x, move.y);
-
-			if (onWall() && !isGrounded())
-			{
-				_rigidbody.gravityScale = 0;
-				_rigidbody.velocity = Vector2.zero;
-			}
-			else
-				_rigidbody.gravityScale = 7;
-			
-			if (Input.GetKeyDown(KeyCode.Space)) // Прыжок
+		if (Input.GetKeyDown(KeyCode.Space) && _grounded) // Прыжок
 				Jump();
-        }
-		else
-			wallJumpColdown += Time.deltaTime;
-		
+        
 		AnimationNinja();
 	}
 
@@ -83,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
 	private void AnimationNinja()
     {
 		animator.SetFloat("Speed", Mathf.Abs(move.x));
-		animator.SetBool("Grounded",isGrounded());
+		animator.SetBool("Grounded", _grounded);
     }
 	
 	/// <summary>
@@ -91,42 +80,34 @@ public class PlayerMovement : MonoBehaviour
 	/// </summary>
 	private void Jump()
 	{
-		if (isGrounded())
-        {
-			_rigidbody.velocity = new Vector2(_rigidbody.velocity.x, JampForse);
-			animator.SetTrigger("Jump");
-        }
-		else if(onWall() && !isGrounded())
-        {
-            if (move.x == 0)
-            {
-				_rigidbody.velocity = new Vector2(-Mathf.Sign(transform.localScale.x) * 10, 0);
-				transform.localScale = new Vector3(-Mathf.Sign(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-			}
-			else
-				_rigidbody.velocity = new Vector2(-Mathf.Sign(transform.localScale.x) * 3, 6);
-
-			wallJumpColdown = 0;
-        }
+		_rigidbody.velocity = new Vector2(_rigidbody.velocity.x, JampForse);
+		_grounded = false;
+		animator.SetTrigger("Jump");
 	}
 
 	/// <summary>
-	/// Атака
+	/// Атака ЛКМ
 	/// </summary>
 	private void AttackLBM()
     {
 		animator.SetTrigger("Attack");
+		//_health.TakeDamage(attack);
     }
 
+	/// <summary>
+	/// Атака ПКМ
+	/// </summary>
 	private void AttackRBM()
     {
-		_spooter.Shoot(move.x);
+		animator.SetTrigger("SuperAttack");
+		cooldownTimer = 0;
+		_spooter.Shoot(Mathf.Sign(move.x));
     }
 
 	/// <summary>
 	/// Флип))
 	/// </summary>
-	private void Flip()
+	public void Flip()
     {
 		if (move.x < 0f)
 			_spriteRenderer.flipX = true;
@@ -140,30 +121,7 @@ public class PlayerMovement : MonoBehaviour
 	/// <param name="collision"></param>
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        if(collision.gameObject.tag == "Ground")
+			_grounded = true;
     }
-
-	private bool isGrounded()
-    {
-		RaycastHit2D raycastHit = Physics2D.BoxCast(
-			_boxCollider.bounds.center, 
-			_boxCollider.bounds.size, 
-			0, Vector2.down, 0.1f, 
-			groundLayer);
-
-		return raycastHit.collider != null;
-    }
-
-	private bool onWall()
-    {
-		RaycastHit2D raycastHit = Physics2D.BoxCast(
-			_boxCollider.bounds.center,
-			_boxCollider.bounds.size,
-			0,
-			new Vector2(transform.localScale.x, 0), 
-			0.1f,
-			wallLayer);
-
-		return raycastHit.collider != null;
-	}
 }

@@ -7,6 +7,7 @@ public class Health : MonoBehaviour
 {
     [SerializeField] private float maxHealth;
     [SerializeField] private Image Bar;
+    [SerializeField] private GameObject LoysePanel;
 
     private float currentHealth;
     private float fill;
@@ -39,7 +40,8 @@ public class Health : MonoBehaviour
         else
         {
             isAlive = false;
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+            LoysePanel.SetActive(true);
         }
     }
 }

@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 [RequireComponent(typeof(Shooter))]
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(SpriteRenderer))]
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Скорость")]
+    [Header("Характеристики персонажа")]
 	[Range(0,10f)][SerializeField] private float Speed = 5f;
-    [Header("Сила прыжка")]
 	[Range(0, 15f)][SerializeField] private float JampForse = 5f;
-	[Header("Перезарядка суперсилы")]
-	[SerializeField] private float attackCooldown;
-	[Header("Удар")]
+	[SerializeField] private float superAttackCooldown;
 	[SerializeField] private float attack;
+	[SerializeField] private float attackRahge = 0.5f;
+    
+	[Header("Setting")]
 	[SerializeField] private Image barSuperAttack;
-
+	[SerializeField] private Transform attackPoint;
+	[SerializeField] LayerMask enemyLayers;
 	public Animator animator;
 
 	private Rigidbody2D _rigidbody;
@@ -23,7 +26,6 @@ public class PlayerMovement : MonoBehaviour
 
 	private float cooldownTimer = Mathf.Infinity;
 	private bool _grounded;
-
 	private Vector2 move;
 
     private void Awake()
@@ -52,19 +54,27 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-		if (Input.GetButtonDown("Fire1")) // Нажатие ЛКМ
-			AttackLBM();
-
-		if (Input.GetButtonUp("Fire2") && cooldownTimer > attackCooldown && _grounded) // Нажмите ПКМ
-			AttackRBM();
+		Attack(); // Атака
 		cooldownTimer += Time.deltaTime; // Перезарядка суперсилы
 		barSuperAttack.fillAmount = cooldownTimer / 5;
 
 		if (Input.GetKeyDown(KeyCode.Space) && _grounded) // Прыжок
 				Jump();
         
-		AnimationNinja();
+		AnimationNinja(); // Анимация
 	}
+
+	/// <summary>
+	/// Атаки
+	/// </summary>
+	private void Attack()
+    {
+		if (Input.GetButtonDown("Fire1")) // Нажатие ЛКМ
+			AttackLBM();
+
+		if (Input.GetButtonUp("Fire2") && cooldownTimer > superAttackCooldown && _grounded) // Нажмите ПКМ
+			AttackRBM();
+    }
 
 	/// <summary>
 	/// Анимация
@@ -91,15 +101,33 @@ public class PlayerMovement : MonoBehaviour
 	private void AttackLBM()
     {
 		animator.SetTrigger("Attack");
-		//_health.TakeDamage(attack);
+
+		Collider2D[] hitEnemis = Physics2D.OverlapCircleAll(attackPoint.position, attackRahge, enemyLayers);
+
+		foreach(Collider2D enemy in hitEnemis)
+        {
+			enemy.GetComponent<Enemis>().TakeDamageEnemy(attack);
+        }
     }
 
 	/// <summary>
-	/// Атака ПКМ
+	/// Нарисованный радиус атаки
 	/// </summary>
-	private void AttackRBM()
+    private void OnDrawGizmosSelected()
+    {
+        if(attackPoint == null)
+			return;
+
+		Gizmos.DrawWireSphere(attackPoint.position, attackRahge);
+    }
+
+    /// <summary>
+    /// Атака ПКМ
+    /// </summary>
+    private void AttackRBM()
     {
 		animator.SetTrigger("SuperAttack");
+
 		cooldownTimer = 0;
 		_spooter.Shoot(Mathf.Sign(move.x));
     }

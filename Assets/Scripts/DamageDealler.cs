@@ -10,7 +10,7 @@ public class DamageDealler : MonoBehaviour
     {
         if (collision.CompareTag("Damageable"))
         {
-            collision.gameObject.GetComponent<Health>().TakeDamage(damage);
+            collision.gameObject.GetComponent<Enemis>().TakeDamageEnemy(damage);
         }
 
         Destroy(gameObject);

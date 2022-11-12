@@ -13,6 +13,7 @@ public class DamageDealler : MonoBehaviour
             collision.gameObject.GetComponent<Enemis>().TakeDamageEnemy(damage);
         }
 
-        Destroy(gameObject);
+        if(!collision.CompareTag("CameraConfiner"))
+            Destroy(gameObject);
     }
 }

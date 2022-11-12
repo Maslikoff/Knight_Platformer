@@ -17,8 +17,11 @@ public class PlayerMovement : MonoBehaviour
 	[Header("Setting")]
 	[SerializeField] private Image barSuperAttack;
 	[SerializeField] private Transform attackPoint;
-	[SerializeField] LayerMask enemyLayers;
+	[SerializeField] private LayerMask enemyLayers;
+	[SerializeField] private Transform firePoint, fFPoint, sFPoint;
 	public Animator animator;
+
+	[HideInInspector] public bool isRight;
 
 	private Rigidbody2D _rigidbody;
 	private SpriteRenderer _spriteRenderer;
@@ -55,6 +58,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
 		Attack(); // Атака
+
 		cooldownTimer += Time.deltaTime; // Перезарядка суперсилы
 		barSuperAttack.fillAmount = cooldownTimer / 5;
 
@@ -129,7 +133,7 @@ public class PlayerMovement : MonoBehaviour
 		animator.SetTrigger("SuperAttack");
 
 		cooldownTimer = 0;
-		_spooter.Shoot(Mathf.Sign(move.x));
+		_spooter.Shoot(move.x);
     }
 
 	/// <summary>
@@ -138,9 +142,21 @@ public class PlayerMovement : MonoBehaviour
 	public void Flip()
     {
 		if (move.x < 0f)
+        {
 			_spriteRenderer.flipX = true;
+			isRight = false;
+
+			firePoint.localPosition = sFPoint.localPosition;
+			firePoint.localRotation = sFPoint.localRotation;
+		}
 		else if (move.x > 0f)
+		{
 			_spriteRenderer.flipX = false;
+			isRight = true;
+
+			firePoint.localPosition = fFPoint.localPosition;
+			firePoint.localRotation = fFPoint.localRotation;
+		}
     }
 
 	/// <summary>

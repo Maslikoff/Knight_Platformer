@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Характеристики персонажа")]
 	[Range(0,10f)][SerializeField] private float Speed = 5f;
-	[Range(0, 15f)][SerializeField] private float JampForse = 5f;
+	[Range(0, 15f)][SerializeField] private float JampForse = 11f;
 	[SerializeField] private float superAttackCooldown;
 	[SerializeField] private float attack;
 	[SerializeField] private float attackRahge = 0.5f;
@@ -19,8 +19,8 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField] private Transform attackPoint;
 	[SerializeField] private LayerMask enemyLayers;
 	[SerializeField] private Transform firePoint, fFPoint, sFPoint;
-	public Animator animator;
 
+	[HideInInspector]public Animator animator;
 	[HideInInspector] public bool isRight;
 
 	private Rigidbody2D _rigidbody;
@@ -105,7 +105,6 @@ public class PlayerMovement : MonoBehaviour
 	private void AttackLBM()
     {
 		animator.SetTrigger("Attack");
-
 		Collider2D[] hitEnemis = Physics2D.OverlapCircleAll(attackPoint.position, attackRahge, enemyLayers);
 
 		foreach(Collider2D enemy in hitEnemis)

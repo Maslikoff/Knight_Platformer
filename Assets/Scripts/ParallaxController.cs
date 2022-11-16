@@ -14,7 +14,7 @@ public class ParallaxController : MonoBehaviour
         _layersCount = layers.Length;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         for (int i = 0; i < _layersCount; i++)
         {

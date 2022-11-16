@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
+
 public class Enemis : MonoBehaviour
 {
-    [Range(0f, 15f)] [SerializeField] private float Speed = 4f;
-    [SerializeField] private float TimeToRevert;
+    [SerializeField] private float Speed, TimeToRevert;
     [SerializeField] private float damage;
     [SerializeField] private float maxHealth = 100f;
     [SerializeField] private Animator animator;
     [SerializeField] private SpriteRenderer spriteRenderer;
 
-    private Rigidbody2D _rigidbody2D;
+    private Rigidbody2D _rigidbody;
 
     private const float IDLE_STATE = 0;
     private const float WALK_STATE = 1;
@@ -22,11 +21,9 @@ public class Enemis : MonoBehaviour
 
     private void Start()
     {
-        _rigidbody2D = GetComponent<Rigidbody2D>();
-
         currentState = WALK_STATE;
-
         currentTimeToRevert = 0;
+        _rigidbody = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
     }
 
@@ -44,7 +41,7 @@ public class Enemis : MonoBehaviour
                 currentTimeToRevert += Time.deltaTime;
                 break;
             case WALK_STATE:
-                _rigidbody2D.velocity = Vector2.left * Speed;
+                _rigidbody.velocity = Vector2.right * Speed;
                 break;
             case REVERT_STATE:
                 spriteRenderer.flipX = !spriteRenderer.flipX;
@@ -53,7 +50,7 @@ public class Enemis : MonoBehaviour
                 break;
         }
 
-        animator.SetFloat("Velocity", _rigidbody2D.velocity.magnitude);
+        animator.SetFloat("Velocity", _rigidbody.velocity.magnitude);
     }
 
     public void TakeDamageEnemy(float damage)
@@ -67,7 +64,7 @@ public class Enemis : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
             collision.gameObject.GetComponent<Health>().TakeDamage(damage);
     }
 

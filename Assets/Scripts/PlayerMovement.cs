@@ -76,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
 		if (Input.GetButtonDown("Fire1")) // Нажатие ЛКМ
 			AttackLBM();
 
-		if (Input.GetButtonUp("Fire2") && cooldownTimer > superAttackCooldown && _grounded) // Нажмите ПКМ
+		if (Input.GetButtonUp("Fire2") && cooldownTimer > superAttackCooldown && move == Vector2.zero) // Нажмите ПКМ
 			AttackRBM();
     }
 

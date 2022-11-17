@@ -12,7 +12,6 @@ public class Enemis : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
 
     private Rigidbody2D _rigidbody;
-    private Vector2 _move;
 
     private const float IDLE_STATE = 0;
     private const float WALK_STATE = 1;
@@ -28,15 +27,13 @@ public class Enemis : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (currentTimeToRevert >= TimeToRevert)
         {
             currentTimeToRevert = 0;
             currentState = REVERT_STATE;
         }
-        _move.x = Vector2.left.x * Speed;
-        _move.y = _rigidbody.velocity.y;
 
         switch (currentState)
         {
@@ -44,7 +41,7 @@ public class Enemis : MonoBehaviour
                 currentTimeToRevert += Time.deltaTime;
                 break;
             case WALK_STATE:
-                _rigidbody.MovePosition(_move);
+                _rigidbody.velocity = Vector2.right * Speed;
                 break;
             case REVERT_STATE:
                 spriteRenderer.flipX = !spriteRenderer.flipX;
@@ -73,7 +70,7 @@ public class Enemis : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Enemy Stoper"))
+        if(collision.CompareTag("EnemyStoper"))
             currentState = IDLE_STATE;
     }
 }

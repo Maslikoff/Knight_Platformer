@@ -11,6 +11,7 @@ TagManager:
   - Enemy Stoper
   - Interactive
   - EnemyStoper
+  - Fireball
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Enemis
   - Interactive
   - Stopper
-  - 
+  - Fireball
   - 
   - 
   - 

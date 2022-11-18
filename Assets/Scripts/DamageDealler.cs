@@ -5,6 +5,7 @@ using UnityEngine;
 public class DamageDealler : MonoBehaviour
 {
     [SerializeField] private float damage;
+    [SerializeField] private Collider2D prefab;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

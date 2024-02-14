@@ -12,6 +12,12 @@ TagManager:
   - Interactive
   - EnemyStoper
   - Fireball
+  - Border
+  - Finesh
+  - Dead
+  - Coin
+  - Enemy
+  - DemagePlat
   layers:
   - Default
   - TransparentFX
@@ -23,8 +29,8 @@ TagManager:
   - Interactive
   - Stopper
   - Fireball
-  - 
-  - 
+  - Dead
+  - Player
   - 
   - 
   - 

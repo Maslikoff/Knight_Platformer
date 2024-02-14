@@ -42,4 +42,10 @@ public class MovingPlatform : MonoBehaviour
     {
         collision.transform.SetParent(null);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Border"))
+            collision.gameObject.GetComponent<Health>().TakeDamage(100);
+    }
 }

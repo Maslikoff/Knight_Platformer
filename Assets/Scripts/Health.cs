@@ -44,4 +44,13 @@ public class Health : MonoBehaviour
             LoysePanel.SetActive(true);
         }
     }
+
+    public void PlusHP(float hp)
+    {
+        if(currentHealth < 100)
+            currentHealth += hp;
+
+        if (isAlive)
+            CheckIsAlive();
+    }
 }

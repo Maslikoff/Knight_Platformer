@@ -10,6 +10,7 @@ public class Enemis : MonoBehaviour
     [SerializeField] private float maxHealth = 100f;
     [SerializeField] private Animator animator;
     [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private GameObject bloodParticles;
 
     private Rigidbody2D _rigidbody;
 
@@ -57,15 +58,16 @@ public class Enemis : MonoBehaviour
     {
         currentHealth -= damage;
         if (currentHealth <= 0)
-        {
-            gameObject.SetActive(false);
-        }
+            Destroy(gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
+        {
             collision.gameObject.GetComponent<Health>().TakeDamage(damage);
+            Instantiate(bloodParticles, transform.position, Quaternion.identity);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -13,8 +13,9 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField] private float superAttackCooldown;
 	[SerializeField] private float attack;
 	[SerializeField] private float attackRahge = 0.5f;
-    
-	[Header("Setting")]
+	[SerializeField] private GameObject bloodParticles;
+
+	[Header("Настройки")]
 	[SerializeField] private Image barSuperAttack;
 	[SerializeField] private Transform attackPoint;
 	[SerializeField] private LayerMask enemyLayers;
@@ -166,5 +167,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if(collision.gameObject.tag == "Ground")
 			_grounded = true;
-    }
+	}
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+		if(collision.gameObject.CompareTag("DemagePlat"))
+			Instantiate(bloodParticles, _rigidbody.position, Quaternion.identity);
+	}
 }

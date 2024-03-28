@@ -14,6 +14,7 @@ public class Coin : MonoBehaviour
     private void Start()
     {
         coin = PlayerPrefs.GetInt("Coin");
+        textCoin.text = coin.ToString();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -22,6 +23,7 @@ public class Coin : MonoBehaviour
         {
             coin++;
             textCoin.text = coin.ToString();
+            SavingDate();
             Destroy(collision.gameObject);
         }
     }

@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 100}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 30
+  controlID: 81
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 31
+  controlID: 38
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -170,7 +170,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 50}
   m_MaxSize: {x: 24288, y: 8096}
   vertical: 0
-  controlID: 32
+  controlID: 39
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -345,10 +345,10 @@ MonoBehaviour:
     editType: 0
     timeReferenceMode: 0
   m_LockTracker:
-    m_IsLocked: 0
+    m_IsLocked: 1
   m_SequenceHierarchy: {fileID: 0}
   m_SequencePath:
-    m_SelectionRoot: 0
+    m_SelectionRoot: 46874
     m_SubElements: []
 --- !u!114 &14
 MonoBehaviour:
@@ -787,7 +787,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: 48, y: 48}
+      snapOffset: {x: 48, y: 10}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: UnityEditor.SceneViewCameraOverlay
@@ -806,9 +806,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 1.1418011, y: -3.0504835, z: -2.7435334}
+    m_Target: {x: 10.7442255, y: -2.6947947, z: -0.023801014}
     speed: 2
-    m_Value: {x: 1.1418011, y: -3.0504835, z: -2.7435334}
+    m_Value: {x: 10.7442255, y: -2.6947947, z: -0.023801014}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -858,9 +858,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 10.228958
+    m_Target: 12.677667
     speed: 2
-    m_Value: 10.228958
+    m_Value: 12.677667
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -908,7 +908,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 73
-    width: 1434
+    width: 1085
     height: 707
   m_SerializedDataModeController:
     m_DataMode: 0
@@ -992,10 +992,10 @@ MonoBehaviour:
       e32: 0
       e33: 1
   m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 9100000, guid: 6a47bd0d6d06e7f498e8499bb08b531e,
+  m_AnimatorController: {fileID: 9100000, guid: 932ac465759910f4082e2225b7405f53,
     type: 2}
   m_BreadCrumbs:
-  - m_Target: {fileID: -6539363626955099620, guid: 6a47bd0d6d06e7f498e8499bb08b531e,
+  - m_Target: {fileID: -598658975982338523, guid: 932ac465759910f4082e2225b7405f53,
       type: 2}
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
@@ -1081,9 +1081,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 2a670000
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 8af3ffff06fbffff
+      m_ExpandedIDs: 9430ffffe835ffff6050ffff6e54ffff06fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1153,7 +1153,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefab
+    - Assets
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -1161,7 +1161,7 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 57
   m_LastFolders:
-  - Assets/Prefab
+  - Assets
   m_LastFoldersGridSize: 57
   m_LastProjectPath: "C:\\Users\\ilyam\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439
     \u0441\u0442\u043E\u043B\\Skill-Unity\\Knight_Platformer"
@@ -1169,9 +1169,9 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 127}
-    m_SelectedIDs: 2a670000
-    m_LastClickedID: 26410
-    m_ExpandedIDs: 00000000ec660000ee660000f0660000f2660000f466000000ca9a3bffffff7f
+    m_SelectedIDs: a2650000
+    m_LastClickedID: 26018
+    m_ExpandedIDs: 00000000a265000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1199,7 +1199,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000ec660000ee660000f0660000f2660000f4660000
+    m_ExpandedIDs: 00000000a2650000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1327,7 +1327,7 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: -5866
+  m_LastSelectedObjectID: -8044
 --- !u!114 &22
 MonoBehaviour:
   m_ObjectHideFlags: 52

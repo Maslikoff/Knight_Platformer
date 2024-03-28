@@ -467,6 +467,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AppleHP Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 1009672048900259974, guid: 712a858f7c626ba4db6f63adcc0d769b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2369,6 +2374,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DamagePlatform (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1049023302621363167, guid: c4728654af6c1b84fb5102e3f29ffb8f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5475,6 +5485,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dead
       objectReference: {fileID: 0}
+    - target: {fileID: 6678837291602139372, guid: 3111f04f14446634aa3c8f45507da697,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5730,6 +5745,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DamagePlatform (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1049023302621363167, guid: c4728654af6c1b84fb5102e3f29ffb8f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6996,6 +7016,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fiinesh
       objectReference: {fileID: 0}
+    - target: {fileID: 8064706860049241266, guid: daddf06b73a290b49ba31f3459a97a8a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8192501146213751888, guid: daddf06b73a290b49ba31f3459a97a8a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7213,6 +7238,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Driving Platform
       objectReference: {fileID: 0}
+    - target: {fileID: 5185433571810266097, guid: d9a4c40af21e8854b9282501d5fe14f2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5185433572200987901, guid: d9a4c40af21e8854b9282501d5fe14f2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7299,6 +7329,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AppleHP
       objectReference: {fileID: 0}
+    - target: {fileID: 1009672048900259974, guid: 712a858f7c626ba4db6f63adcc0d769b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7316,6 +7351,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DamagePlatform
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018130211496514782, guid: 4fcd294f369c72b45bba7ad06ac063c3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5949236478628229363, guid: 4fcd294f369c72b45bba7ad06ac063c3,
         type: 3}

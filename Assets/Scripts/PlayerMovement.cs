@@ -63,10 +63,16 @@ public class PlayerMovement : MonoBehaviour
 		cooldownTimer += Time.deltaTime; // Перезарядка суперсилы
 		barSuperAttack.fillAmount = cooldownTimer / 5;
 
-		if (Input.GetKeyDown(KeyCode.Space) && _grounded) // Прыжок
-				Jump();
-        
+		CheckSpase();
+
+
 		AnimationNinja(); // Анимация
+	}
+
+	private void CheckSpase()
+    {
+		if (Input.GetKeyDown(KeyCode.Space) && _grounded) // Прыжок
+			Jump();
 	}
 
 	/// <summary>

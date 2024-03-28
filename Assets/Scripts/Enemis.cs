@@ -30,11 +30,7 @@ public class Enemis : MonoBehaviour
 
     private void Update()
     {
-        if (currentTimeToRevert >= TimeToRevert)
-        {
-            currentTimeToRevert = 0;
-            currentState = REVERT_STATE;
-        }
+        CheckTimeRevert();
 
         switch (currentState)
         {
@@ -52,6 +48,15 @@ public class Enemis : MonoBehaviour
         }
 
         animator.SetFloat("Velocity", _rigidbody.velocity.magnitude);
+    }
+
+    private void CheckTimeRevert()
+    {
+        if (currentTimeToRevert >= TimeToRevert)
+        {
+            currentTimeToRevert = 0;
+            currentState = REVERT_STATE;
+        }
     }
 
     public void TakeDamageEnemy(float damage)

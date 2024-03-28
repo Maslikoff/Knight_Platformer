@@ -22,6 +22,13 @@ public class MovingPlatform : MonoBehaviour
 
     void Update()
     {
+        CheckVector();
+
+        transform.position = Vector2.MoveTowards(transform.position, points[i].position, SpeedPlatform * Time.deltaTime);
+    }
+
+    private void CheckVector()
+    {
         if (Vector2.Distance(transform.position, points[i].position) < 0.02f)
         {
             i++;
@@ -29,8 +36,6 @@ public class MovingPlatform : MonoBehaviour
             if (i == points.Length)
                 i = 0;
         }
-
-        transform.position = Vector2.MoveTowards(transform.position, points[i].position, SpeedPlatform * Time.deltaTime);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
